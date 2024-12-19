@@ -68,7 +68,7 @@
 
 <p>SCAD is a form of penalized regression that is specifically designed for variable selection. The method imposes a penalty on the coefficients of a linear model to shrink them, encouraging sparsity, and ultimately selecting a subset of important predictors.</p>
 
-<p>The penalty function used in SCAD is piecewise and non-linear, which is designed to <strong>avoid over-shrinking</strong> important coefficients, a limitation in simpler L1 penalties like Lasso. The SCAD penalty function can be expressed as:</p>
+<p>The penalty function used in SCAD is piecewise and non-linear, which is designed to avoid over-shrinking important coefficients, a limitation in simpler L1 penalties like Lasso. The SCAD penalty function can be expressed as:</p>
 
 $$ P_{\lambda}( \boldsymbol{\beta}) = \sum_{j=1}^p \left( \lambda | \beta_j| \mathbf{1}(|\beta_j| \leq \lambda) + \frac{ \left( \lambda | \beta_j| - \beta_j^2 \right)^2 }{ 2(a-1)\lambda } \mathbf{1}(|\beta_j| > \lambda) \right) $$
 
@@ -126,7 +126,49 @@ $$ \min_{\boldsymbol{\beta}} \left( \frac{1}{2n} \| \mathbf{y} - \mathbf{X} \bol
 <p>With the trained model, I examined the coefficients of the independent variables. In SqrtLasso, non-zero coefficients indicate that the corresponding features contribute significantly to the model's prediction, while near-zero coefficients signal that those features were effectively excluded from the model. By selecting only the features with non-zero coefficients (which ended up being all them), I was able to use the most relevant variables that help us determine a song’s danceability.</p>
 
 <h2 id="discussion-and-inferences">Discussion and inferences</h2>
-<p>Include your perspective and critical thinking. Comment what seems to be working and identify possible future research.</p>
+
+
+<p>My model said that all the features were useful in predicting danceability. It gave the following coefficients:</p>
+
+<figure>
+<img src='coefficients.png' alt='coefficients' />
+<figcaption>Coefficients of the features.
+</figcaption>
+</figure>
+
+<p>Testing the model, I got the following results:</p>
+
+<figure>
+<img src='results.png' alt='results' />
+<figcaption>Coefficients of the features.
+</figcaption>
+</figure>
+
+<p>The results of our model are pretty accurate in estimating the danceability of songs. For example, for the song in row 22, the predicted danceability was 48.1717, which is very close to the actual danceability value of 48, with a small difference of just 0.1717. This suggests that the model is performing well for individual predictions, with the differences between predicted and actual values being relatively small.</p>
+
+<p>The average distance between predicted and actual danceability across all data points is 3.125, which is a measure of the overall model performance. The scale of danceability ranges from 0 to 100, so an average error of around 3.1 points is pretty reasonable. On average, the model is predicting within a few points of the true values, which may be acceptable in many practical scenarios, such as music recommendation systems or playlist curation.</p>
+
+<p>However, there are potential areas for improvement:</p>
+
+<ul>
+    <li><strong>Model Accuracy:</strong> While the model appears to predict well in certain instances, the average distance suggests that there may be cases where the predictions could be farther off. The model might be more accurate in predicting songs that are either highly danceable or not at all, but less precise in the middle ranges, or vice versa.</li>
+    <li><strong>Feature Selection:</strong> The model's accuracy could potentially be improved by refining the features used for prediction. Introducing interaction terms or exploring more complex models could help.</li>
+    <li><strong>Data Quality:</strong> The training data could also influence the model's performance. For example, making sure that the dataset is representative of various genres and styles of music might lead to more generalized results. Also, considering what was popular in previous years versus the present could add value to the prediction process.</li>
+</ul>
+
+<p><strong>Next Steps:</strong></p>
+
+<ul>
+    <li><strong>Model Refinement:</strong> Experiment with more advanced regression techniques or machine learning models such as Random Forests, Gradient Boosting Machines, or Neural Networks. These models could potentially capture more complex patterns in the data and improve the overall prediction accuracy.</li>
+    <li><strong>Evaluation on External Data:</strong> We could test the model on a completely separate dataset (Apple Music or Youtube Music) to evaluate its real-world applicability and check whether it maintains a similar level of accuracy on new, unseen songs.</li>
+</ul>
+
+<p>By incorporating these suggestions, the model could potentially provide even more accurate and insightful predictions, which could be valuable for artists and producers who are trying to predict the danceability of their future tracks.</p>
+
+
+
+
+    
 <h2 id="references">References</h2>
 <ol>
 <li></li>
