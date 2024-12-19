@@ -64,7 +64,7 @@
 
 <p>The penalty function used in SCAD is piecewise and non-linear, which is designed to <strong>avoid over-shrinking</strong> important coefficients, a limitation in simpler L1 penalties like Lasso. The SCAD penalty function can be expressed as:</p>
 
-$$ P_{\lambda}( \boldsymbol{\beta}) = \sum_{j=1}^p \left( \lambda | \beta_j| \mathbf{1}(|\beta_j| \leq \lambda) + \frac{ \left( \lambda | \beta_j| - \beta_j^2 \right)^2 }{ 2(a-1)\lambda } \mathbf{1}(|\beta_j| > \lambda) \right) $$
+<p>$$ P_{\lambda}( \boldsymbol{\beta}) = \sum_{j=1}^p \left( \lambda | \beta_j| \mathbf{1}(|\beta_j| \leq \lambda) + \frac{ \left( \lambda | \beta_j| - \beta_j^2 \right)^2 }{ 2(a-1)\lambda } \mathbf{1}(|\beta_j| > \lambda) \right) $$</p>
 
 <p>where:</p>
 <ul>
