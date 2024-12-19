@@ -65,7 +65,7 @@
 
 <p><strong>1. SCAD Regularization (Smoothly Clipped Absolute Deviation)</strong></p>
 
-<p>SCAD is a form of <strong>penalized regression</strong> that is specifically designed for <strong>variable selection</strong>. The method imposes a penalty on the coefficients of a linear model to shrink them, encouraging sparsity (i.e., setting some coefficients to zero) and ultimately selecting a subset of important predictors.</p>
+<p>SCAD is a form of penalized regression that is specifically designed for variable selection. The method imposes a penalty on the coefficients of a linear model to shrink them, encouraging sparsity, and ultimately selecting a subset of important predictors.</p>
 
 <p>The penalty function used in SCAD is piecewise and non-linear, which is designed to <strong>avoid over-shrinking</strong> important coefficients, a limitation in simpler L1 penalties like Lasso. The SCAD penalty function can be expressed as:</p>
 
@@ -82,6 +82,39 @@ $$ P_{\lambda}( \boldsymbol{\beta}) = \sum_{j=1}^p \left( \lambda | \beta_j| \ma
 
 
 
+<p><strong>2. ElasticNet Regularization</strong></p>
+
+<p>ElasticNet is another regularization method that combines \( L1 \) (Lasso) and \( L2 \) (Ridge) penalties. It is particularly useful when there are highly correlated predictors or when you suspect that a mixture of \( L1 \) and \( L2 \) regularization will help with model selection and stability. The objective function for ElasticNet is:</p>
+
+$$ \min_{\boldsymbol{\beta}} \left( \frac{1}{2n} \| \mathbf{y} - \mathbf{X} \boldsymbol{\beta} \|_2^2 + \lambda_1 \|\boldsymbol{\beta}\|_1 + \frac{\lambda_2}{2} \|\boldsymbol{\beta}\|_2^2 \right) $$
+
+<p>where:</p>
+<ul>
+  <li>\( \| \mathbf{y} - \mathbf{X} \boldsymbol{\beta} \|_2^2 \) is the residual sum of squares (i.e., the least squares loss).</li>
+  <li>\( \| \boldsymbol{\beta} \|_1 \) is the L1-norm (sum of the absolute values of the coefficients), promoting sparsity.</li>
+  <li>\( \| \boldsymbol{\beta} \|_2^2 \) is the L2-norm (sum of the squares of the coefficients), promoting small coefficients but not forcing them to zero.</li>
+  <li>\( \lambda_1 \) and \( \lambda_2 \) are the regularization parameters for L1 and L2 penalties, respectively.</li>
+</ul>
+
+<p>ElasticNet strikes a balance between Lasso and Ridge regression. It tends to perform well in situations where Lasso would struggle due to multicollinearity (high correlation between predictors). The method allows for a combination of coefficient shrinkage (from Ridge) and variable selection (from Lasso).</p>
+
+<p><strong>3. SqrtLasso Regularization</strong></p>
+
+<p>SqrtLasso is a variation of Lasso regression where the L1 penalty is modified by applying the square root to the absolute value of the coefficients. The objective function for SqrtLasso is:</p>
+
+$$ \min_{\boldsymbol{\beta}} \left( \frac{1}{2n} \| \mathbf{y} - \mathbf{X} \boldsymbol{\beta} \|_2^2 + \lambda \sum_{j=1}^p \sqrt{|\beta_j|} \right) $$
+
+<p>where:</p>
+<ul>
+  <li>\( \lambda \) is the regularization parameter controlling the strength of the penalty.</li>
+  <li>The \( \sqrt{|\beta_j|} \) of the coefficients makes the shrinkage less aggressive, particularly for coefficients that are larger. This can make SqrtLasso more appropriate in situations where you don’t want to completely shrink or eliminate certain coefficients, but still want to encourage sparsity. It’s a middle ground between standard Lasso and Ridge regression, offering a softer penalty.</li>
+</ul>
+
+<p>Since our data has low correlation, I proceeded by generating 200 datasets where the input features have a low correlation structure (I used 0.2). I then applied ElasticNet, SqrtLasso, and SCAD to check which method produces the best approximation of an ideal solution, such as a "betastar" that I designed with a sparsity pattern.</p>
+
+
+
+    
 
      
 <h3 id="the-actual-application-of-the-methods-and-the-validation-procedure">The actual application of the methods and the validation procedure</h3>
