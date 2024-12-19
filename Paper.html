@@ -2,6 +2,11 @@
 <!DOCTYPE html>
 <html>
 
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
 <!-- From here: https://alt-571910f3bd595.blackboard.com/bbcswebdav/pid-2488871-dt-content-rid-35025160_1/courses/DATA441-01-S24/Structure%20for%20the%20Capstone%20Project.html?one_hash=9E98C5E068AD11CA1A9FABEA8B342AE5&f_hash=247A82DCB91F27D68CE2D7902B9836FD
    -->
 <head>
@@ -64,7 +69,7 @@
 
 <p>The penalty function used in SCAD is piecewise and non-linear, which is designed to <strong>avoid over-shrinking</strong> important coefficients, a limitation in simpler L1 penalties like Lasso. The SCAD penalty function can be expressed as:</p>
 
-<p>$$ P_{\lambda}( \boldsymbol{\beta}) = \sum_{j=1}^p \left( \lambda | \beta_j| \mathbf{1}(|\beta_j| \leq \lambda) + \frac{ \left( \lambda | \beta_j| - \beta_j^2 \right)^2 }{ 2(a-1)\lambda } \mathbf{1}(|\beta_j| > \lambda) \right) $$</p>
+$$ P_{\lambda}( \boldsymbol{\beta}) = \sum_{j=1}^p \left( \lambda | \beta_j| \mathbf{1}(|\beta_j| \leq \lambda) + \frac{ \left( \lambda | \beta_j| - \beta_j^2 \right)^2 }{ 2(a-1)\lambda } \mathbf{1}(|\beta_j| > \lambda) \right) $$
 
 <p>where:</p>
 <ul>
