@@ -47,6 +47,7 @@
 <p>I only used these variables for this analysis.</p>
 
 <h2 id="methods">Methods</h2>
+<h3 id="pre-processing-methods">Pre-processing methods</h3>
 <p>The dataset I was working with was very clean so there was not much I needed to do to clean the data. Once I picked which of the features I was going to use to predict danceability (I selected 7), I checked to see if there was any sign of multicollinearity among the variables. Fortunately, there was not.</p>
 <figure>
 <img src='heat_map.png' alt='heat_map' />
@@ -54,8 +55,8 @@
 </figcaption>
 </figure>
      
-<h3 id="pre-processing-methods">Pre-processing methods</h3>
-<p>Write in your details.</p>
+
+
 
 
      
@@ -118,8 +119,12 @@ $$ \min_{\boldsymbol{\beta}} \left( \frac{1}{2n} \| \mathbf{y} - \mathbf{X} \bol
 
      
 <h3 id="the-actual-application-of-the-methods-and-the-validation-procedure">The actual application of the methods and the validation procedure</h3>
-<p>Here you can include flow chart diagrams and describe your coding approach.</p>
-<p>Suggestion: make sure you have anough computing power.  (Consider Colab Pro)</p>
+<p>After evaluating the performance of the three regularization methods, SqrtLasso produced the most accurate solution. The method was effective in identifying a sparse set of important predictors, while avoiding over-shrinking relevant features. I proceeded by applying SqrtLasso to the dataset to perform variable selection based on the importance of the features.</p>
+
+<p>The first step in this process was to train the SqrtLasso model using k-fold cross-validation. Cross-validation is a robust technique that allows us to estimate the model's performance by dividing the dataset into \(k\) subsets (or "folds"). The model is then trained on \(k-1\) folds and tested on the remaining fold, repeating this process until each fold has been used as the test set. The k-fold cross-validation guarantees that the model’s performance is generalizable and not overly reliant on any specific partition of the data.</p>
+
+<p>With the trained model, I examined the coefficients of the independent variables. In SqrtLasso, non-zero coefficients indicate that the corresponding features contribute significantly to the model's prediction, while near-zero coefficients signal that those features were effectively excluded from the model. By selecting only the features with non-zero coefficients (which ended up being all them), I was able to use the most relevant variables that help us determine a song’s danceability.</p>
+
 <h2 id="discussion-and-inferences">Discussion and inferences</h2>
 <p>Include your perspective and critical thinking. Comment what seems to be working and identify possible future research.</p>
 <h2 id="references">References</h2>
