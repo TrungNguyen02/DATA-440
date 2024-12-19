@@ -19,7 +19,28 @@
 <p>What makes people dance to a song? Some songs seem to have an innate quality that gets people moving, while others may not evoke the same response, even with similar beats or tempos. This phenomenon of danceability is a key factor in the popularity of songs at parties, clubs, and social events where dancing is central. Understanding the underlying factors that contribute to a song’s ability to make people dance is invaluable for artists, producers, and record labels. By identifying these factors, they can produce music that appeals to broader audiences and increases the chances of a track being played in venues where people want to dance.</p>
 <p>In this capstone project, we explore Spotify’s dataset of the most popular songs to uncover trends, patterns, and potential predictors of a song's danceability. We will analyze the relationship between various features—such as energy and valence—and how they help predict how likely a song is to be considered “danceable.” Through a combination of exploratory data analysis and machine learning techniques, we aim to gain insights that could help predict the danceability of new and upcoming songs. Additionally, we will develop predictive models that can assess the danceability of tracks based on their characteristics.</p>     
 <h2 id="description-of-data">Description of Data</h2>
-<p>This needs to be comprehensive and very detailed.</p>
+<p>This dataset contains a comprehensive list of the 943 most famous songs of 2023 as listed on Spotify. The dataset offers a wealth of features beyond what is typically available in similar datasets. It provides insights into each song's attributes, popularity, and presence on various music platforms. The dataset includes information such as track name, artist(s) name, release date, Spotify playlists and charts, streaming statistics, Apple Music presence, Deezer presence, Shazam charts, and various audio features, including “danceability.” The data was sourced using Spotify’s API which they allow anyone to use for free, and lots of these metrics are Spotify’s own internal metrics that they use for their song recommendation algorithms.</p>
+
+<p>There are many features available, but I think the only relevant ones are listed below as they are the only ones that determine how a song sounds (the rest are irrelevant to us):</p>
+
+<p><strong>Dependent Variable:</strong></p>
+<ul>
+  <li><strong>danceability_%</strong>: percentage indicating how suitable the song is for dancing</li>
+</ul>
+
+<p><strong>Independent Variables:</strong></p>
+<ul>
+  <li><strong>bpm</strong>: beats per minute, a measure of song tempo</li>
+  <li><strong>valence_%</strong>: positivity of the song’s musical content</li>
+  <li><strong>energy_%</strong>: perceived energy level of the song</li>
+  <li><strong>acousticness_%</strong>: amount of acoustic sound in the song</li>
+  <li><strong>speechiness_%</strong>: amount of spoken words in the song</li>
+  <li><strong>liveness_%</strong>: presence of live performance elements</li>
+  <li><strong>instrumentalness_%</strong>: amount of instrumental content in the song</li>
+</ul>
+
+<p>I only used these variables for this analysis.</p>
+
 <h2 id="methods">Methods</h2>
 <h3 id="pre-processing-methods">Pre-processing methods</h3>
 <p>Write in your details.</p>
