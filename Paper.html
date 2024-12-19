@@ -73,12 +73,12 @@ $$ P_{\lambda}( \boldsymbol{\beta}) = \sum_{j=1}^p \left( \lambda | \beta_j| \ma
 
 <p>where:</p>
 <ul>
-  <li>\[\lambda\] is the tuning parameter that controls the strength of the penalty.</li>
-  <li>$\beta_j$ are the coefficients of the linear model.</li>
-  <li>$a$ is a parameter that typically takes values between 3 and 4, controlling the smoothness of the penalty.</li>
+  <li>\(\lambda\) is the tuning parameter that controls the strength of the penalty.</li>
+  <li>\(\beta_j\) are the coefficients of the linear model.</li>
+  <li>\(a\) is a parameter that typically takes values between 3 and 4, controlling the smoothness of the penalty.</li>
 </ul>
 
-<p>The idea behind SCAD is that it penalizes small coefficients (leading to sparsity), but the penalty is not as harsh for large coefficients. When $\beta_j$ is small, the penalty behaves like Lasso, but when $\beta_j$ is large, it becomes much less aggressive, allowing larger coefficients to stay in the model. This adaptive feature helps improve performance and variable selection accuracy.</p>
+<p>The idea behind SCAD is that it penalizes small coefficients (leading to sparsity), but the penalty is not as harsh for large coefficients. When \(\beta_j\) is small, the penalty behaves like Lasso, but when \(\beta_j\) is large, it becomes much less aggressive, allowing larger coefficients to stay in the model. This adaptive feature helps improve performance and variable selection accuracy.</p>
 
 
 
